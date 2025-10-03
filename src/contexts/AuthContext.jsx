@@ -3,7 +3,7 @@ import {signIn as signInApi, register as registerApi} from '../apis';
 
 const AuthContext = createContext();
 
-export const AuthContext = ({children}) => {
+export const AuthProvider = ({children}) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [loading, setLoading] = useState(false);
 
