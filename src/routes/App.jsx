@@ -1,13 +1,19 @@
 import React from 'react'
-import { Routes, Route } from "react-router"
+import { AuthProvider } from '@/contexts/AuthContext'
+import { Routes, Route, BrowserRouter } from "react-router"
 import { Home } from '../pages/Home'
 export const App = () => {
   return (
     <>
-      <Routes>
-        {/* Rutas publicas */}
-        <Route path='/' element={<Home/>} />
-      </Routes>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            {/* Rutas publicas */}
+            <Route path='/' element={<Home/>} />
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
+      
     </>
   )
 }
