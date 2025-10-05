@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useContext} from 'react'
 import {signIn as signInApi, register as registerApi} from '../apis';
 
 const AuthContext = createContext();
@@ -44,4 +44,11 @@ export const AuthProvider = ({children}) => {
   }
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 };
+export const useAuth=()=>{
+  const context = useContext(AuthContext)
+  if (!context){
+    throw new Error("useAuth debe usarse dentro de AuthProvider")
+  }
+  return context
+}
 export default AuthContext;
