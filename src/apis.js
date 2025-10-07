@@ -21,9 +21,7 @@ function request(path, { data = null, token = null, method = "GET" }) {
     }
 
     // Otherwise, if there are errors
-    return response
-      .json()
-      .then((json) => {
+    return response.json().then((json) => {
         // Handle JSON error, response by the server
 
         if (response.status === 400) {
@@ -46,6 +44,11 @@ function request(path, { data = null, token = null, method = "GET" }) {
     toast(e.message, {type: "error"});
   })
 
+  .then((json) => {
+    //Call API successfully
+    toast(JSON.stringify(json), {type: 'success'});
+    return json;
+  })
 
 }
 
@@ -60,5 +63,12 @@ export function register(username, password) {
   return request("/auth/users/", {
     data: {username, password},
     method: "POST",
+  })
+}
+
+export function getCurrentUser(token) {
+  return request("/auth/users/me/", {
+    method: "GET",
+    token: token, 
   })
 }
