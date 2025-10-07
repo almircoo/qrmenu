@@ -16,7 +16,7 @@ import { toast } from 'sonner'
 
 export const Navbar = () => {
   const navigate = useNavigate()
-  const { token, signOut } = useAuth()
+  const { token, user, signOut } = useAuth()
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleLogout = async () => {
