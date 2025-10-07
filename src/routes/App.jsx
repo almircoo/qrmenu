@@ -1,8 +1,8 @@
 import React from 'react'
 import { AuthProvider } from '@/contexts/AuthContext'
 import { ProtectedRoute } from './ProtectedRoute'
-
 import { Routes, Route, BrowserRouter } from "react-router"
+import { Toaster } from 'sonner'
 import { Home } from '../pages/Home'
 import { Login } from '@/pages/Login'
 import { Register } from '@/pages/Register'
@@ -22,6 +22,7 @@ export const App = () => {
             <Route path='/places' element={<ProtectedRoute><Places/></ProtectedRoute>} />
           </Routes>
         </BrowserRouter>
+        <Toaster position="top-right" richColors />
       </AuthProvider>
       
     </>
