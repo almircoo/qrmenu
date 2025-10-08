@@ -9,11 +9,11 @@ export const AuthProvider = ({children}) => {
   const [user, setUser] = useState(null); 
 
   // fetch the user profile
-  const fetchUser = async (authToken) => {
-    if (!authToken) return;
+  const fetchUser = async (token) => {
+    if (!token) return;
     setLoading(true);
     try {
-      const userData = await getCurrentUserApi(authToken);
+      const userData = await getCurrentUserApi(token);
       if (userData) {
         setUser(userData);
       }
@@ -42,7 +42,7 @@ export const AuthProvider = ({children}) => {
       setToken(response.auth_token);
 
       // Fetch the user profile immediately after successful login
-      await fetchUser(authToken); 
+      await fetchUser(token); 
 
       callback();
     }
