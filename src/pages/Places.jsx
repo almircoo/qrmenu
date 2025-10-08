@@ -67,10 +67,10 @@ export const Places = () => {
       </div>
 
       <Dialog open={showDialog} onOpenChange={setShowDialog}>
-        <DialogHeader>
-          <DialogTitle> Create a new place </DialogTitle>
-        </DialogHeader>
         <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Create a new place </DialogTitle>
+          </DialogHeader>
           <PlaceForm onDone={onDone} />
         </DialogContent>
       </Dialog>
