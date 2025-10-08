@@ -81,12 +81,15 @@ export function addPlace(data, token) {
   return request("/api/places/", { data, token, method: "POST" })
 }
 //uplaod iamges to cloudinary
+const CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+const CLOUDINARY_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`;
+
 export function uploadImage(image) {
   const formData = new FormData()
   formData.append("file", image)
   formData.append("upload_preset", "qrmenu")
 
-  return fetch("https://api.cloudinary.com/v1_1/ddtfp922t/image/upload", { 
+  return fetch(CLOUDINARY_URL, { 
     method: "POST",
     body: formData,
   }).then((response) => {
