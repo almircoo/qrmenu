@@ -72,3 +72,24 @@ export function getCurrentUser(token) {
     token: token, 
   })
 }
+
+export function fetchPlaces(token) {
+  return request("/api/places/", { token })
+}
+
+export function addPlace(data, token) {
+  return request("/api/places/", { data, token, method: "POST" })
+}
+//uplaod iamges to cloudinary
+export function uploadImage(image) {
+  const formData = new FormData()
+  formData.append("file", image)
+  formData.append("upload_preset", "qrmenu")
+
+  return fetch("https://api.cloudinary.com/v1_1/ddtfp922t/image/upload", { 
+    method: "POST",
+    body: formData,
+  }).then((response) => {
+    return response.json()
+  })
+}
